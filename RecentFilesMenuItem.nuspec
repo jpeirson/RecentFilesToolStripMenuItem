@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>RecentFilesMenuItem</id>
+    <version>1.0</version>
+    <title>Recent Files MenuItem</title>
+    <authors>Nate Shoffner</authors>
+    <owners>Nate Shoffner</owners>
+    <licenseUrl>https://github.com/NateShoffner/RecentFilesMenuItem/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/NateShoffner/RecentFilesMenuItem/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.NET WinForms MenuItem control for displaying recently-accessed files in a variety of layouts.</description>
+    <releaseNotes>* Initial deployment.</releaseNotes>
+    <copyright>Copyright Nate Shoffner 2016</copyright>
+    <tags>MRU, WinForms</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\RecentFilesMenuItem.dll" target="lib\net35\RecentFilesMenuItem.dll" />
+    <file src="bin\Release\RecentFilesMenuItem.XML" target="lib\net35\RecentFilesMenuItem.XML" />
+  </files>
+</package>
