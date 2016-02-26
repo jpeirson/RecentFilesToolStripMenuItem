@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>RecentFilesMenuItem</id>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <title>Recent Files MenuItem</title>
     <authors>Nate Shoffner</authors>
     <owners>Nate Shoffner</owners>
@@ -10,7 +10,10 @@
     <projectUrl>https://github.com/NateShoffner/RecentFilesMenuItem/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>.NET WinForms MenuItem control for displaying recently-accessed files in a variety of layouts.</description>
-    <releaseNotes>* Initial deployment.</releaseNotes>
+    <releaseNotes>v1.0.1 - 2/26/2016
+	* Fixed access modifier
+	v1.0 - 2/26/2016:
+	* Initial deployment.</releaseNotes>
     <copyright>Copyright Nate Shoffner 2016</copyright>
     <tags>MRU, WinForms</tags>
   </metadata>
