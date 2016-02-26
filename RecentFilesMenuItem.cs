@@ -14,7 +14,7 @@ namespace RecentFilesMenuItem
     /// <summary>
     ///     Represents a menu for recently-access files to be displayed within a System.Windows.Forms.MainMenu.
     /// </summary>
-    internal class RecentFilesMenuItem : MenuItem
+    public class RecentFilesMenuItem : MenuItem
     {
         private readonly MenuItem _clearMenuItem = new MenuItem();
         private readonly List<RecentMenuItem> _items = new List<RecentMenuItem>();
