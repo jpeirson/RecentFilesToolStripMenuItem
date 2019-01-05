@@ -7,8 +7,8 @@
     <ProjectGuid>{D345D128-BD40-4B83-9F76-E82308AA30CA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RecentFilesMenuItem</RootNamespace>
-    <AssemblyName>RecentFilesMenuItem</AssemblyName>
+    <RootNamespace>RecentFilesToolStripMenuItem</RootNamespace>
+    <AssemblyName>RecentFilesToolStripMenuItem</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -28,15 +28,16 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\RecentFilesMenuItem.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\RecentFilesToolStripMenuItem.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RecentFilesMenuItem.cs">
+    <Compile Include="RecentFilesToolStripMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

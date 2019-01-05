@@ -9,16 +9,16 @@ using System.Windows.Forms;
 
 #endregion
 
-namespace RecentFilesMenuItem
+namespace RecentFilesToolStripMenuItem
 {
     /// <summary>
     ///     Represents a menu for recently-access files to be displayed within a System.Windows.Forms.MainMenu.
     /// </summary>
-    public class RecentFilesMenuItem : MenuItem
+    public class RecentFilesMenuItem : ToolStripMenuItem
     {
-        private readonly MenuItem _clearMenuItem = new MenuItem();
+        private readonly ToolStripMenuItem _clearMenuItem = new ToolStripMenuItem();
         private readonly List<RecentMenuItem> _items = new List<RecentMenuItem>();
-        private readonly MenuItem _openAllMenuItem = new MenuItem();
+        private readonly ToolStripMenuItem _openAllMenuItem = new ToolStripMenuItem();
 
         private string _clearOptionText = "Clear All Recent Items";
         private bool _displayClearOption = true;
@@ -176,6 +176,16 @@ namespace RecentFilesMenuItem
         /// </summary>
         public event EventHandler AllItemClicked;
 
+        protected override void OnParentChanged(ToolStrip oldParent, ToolStrip newParent)
+        {
+            base.OnParentChanged(oldParent, newParent);
+
+            if (!DesignMode)
+            {
+                PopulateItems();
+            }
+        }
+
         /// <summary>
         ///     Adds a new menu item to the menu.
         /// </summary>
@@ -268,25 +278,25 @@ namespace RecentFilesMenuItem
             }
 
             if (DisplayOpenAllOption || DisplayClearOption)
-                MenuItems.Add(new MenuItemSeperator());
+                DropDownItems.Add(new MenuItemSeperator());
 
             if (DisplayOpenAllOption)
-                MenuItems.Add(_openAllMenuItem);
+                DropDownItems.Add(_openAllMenuItem);
 
             if (DisplayClearOption)
-                MenuItems.Add(_clearMenuItem);
+                DropDownItems.Add(_clearMenuItem);
         }
 
-        private void PopulateChildItem(MenuItem item)
+        private void PopulateChildItem(ToolStripMenuItem item)
         {
             Visible = true;
-            MenuItems.Add(0, item);
-            Enabled = MenuItems.Count > 0;
+            DropDownItems.Insert(0, item);
+            Enabled = DropDownItems.Count > 0;
         }
 
         private void ClearChildItems()
         {
-            MenuItems.Clear();
+            DropDownItems.Clear();
             Enabled = false;
         }
 
@@ -304,7 +314,7 @@ namespace RecentFilesMenuItem
             if (_items.Count == 0)
                 return;
 
-            var itemIndex = Parent.MenuItems.IndexOf(this);
+            var itemIndex = Parent.Items.IndexOf(this);
 
             PopulateConsecutiveItem(itemIndex, new MenuItemSeperator());
             itemIndex++;
@@ -339,20 +349,20 @@ namespace RecentFilesMenuItem
             PopulateConsecutiveItem(itemIndex, new MenuItemSeperator());
         }
 
-        private void PopulateConsecutiveItem(int index, MenuItem item)
+        private void PopulateConsecutiveItem(int index, ToolStripMenuItem item)
         {
-            Parent.MenuItems.Add(index, item);
+            Parent.Items.Insert(index, item);
             _consecutiveItemIndexes.Add(index);
         }
 
         private void ClearConsecutiveItems()
         {
-            var owner = (Parent as MenuItem);
+            var owner = Parent;
             _consecutiveItemIndexes.Reverse();
 
             foreach (var index in _consecutiveItemIndexes)
             {
-                owner.MenuItems.RemoveAt(index);
+                owner.Items.RemoveAt(index);
             }
 
             _consecutiveItemIndexes.Clear();
@@ -363,7 +373,7 @@ namespace RecentFilesMenuItem
         /// <summary>
         ///     Represents an individual menu item separator.
         /// </summary>
-        internal class MenuItemSeperator : MenuItem
+        internal class MenuItemSeperator : ToolStripMenuItem
         {
             public MenuItemSeperator()
             {
@@ -374,7 +384,7 @@ namespace RecentFilesMenuItem
         /// <summary>
         ///     Represents an individual recent menu item.
         /// </summary>
-        public class RecentMenuItem : MenuItem
+        public class RecentMenuItem : ToolStripMenuItem
         {
             /// <summary>
             ///     Initializes a new RecentMenuItem.
